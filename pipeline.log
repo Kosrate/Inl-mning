@@ -1,0 +1,6 @@
+2024-12-19 09:11:11,307 - ERROR - Error reading file data.csv: [Errno 2] No such file or directory: 'data.csv'
+2024-12-19 09:11:11,307 - ERROR - Pipeline failed: [Errno 2] No such file or directory: 'data.csv'
+2024-12-19 09:19:39,620 - ERROR - Error reading file data.csv: [Errno 2] No such file or directory: 'data.csv'
+2024-12-19 09:19:39,620 - ERROR - Pipeline failed: [Errno 2] No such file or directory: 'data.csv'
+2024-12-19 09:20:45,851 - ERROR - Error updating database: 'repalce' is not valid for if_exists
+2024-12-19 09:20:45,851 - ERROR - Pipeline failed: 'repalce' is not valid for if_exists
