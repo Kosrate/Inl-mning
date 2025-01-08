@@ -2,6 +2,8 @@ import pandas as pd
 import sqlite3
 import logging
 from datetime import datetime
+import schedule
+import time
 
 # Konfigurera loggning
 logging.basicConfig(
@@ -38,7 +40,7 @@ def update_database(df, db_path, table_name):
         logging.error(f"Error updating database: {e}")
         raise
 
-if __name__ == "__main__":
+def run_pipeline():
     try:
         # Läs in data
         file_path = "data.csv"
@@ -49,5 +51,16 @@ if __name__ == "__main__":
         processed_data = process_data(data)
         update_database(processed_data, db_path, table_name)
 
+        print("Pipeline finished successfully")
     except Exception as e:
         logging.error(f"Pipeline failed: {e}")
+
+        # Lägg till schemaläggning
+    schedule.every(10).minutes.do(run_pipeline)  # Kör var 10:e minut
+    schedule.every().day.at("06:00").do(run_pipeline)  # Kör kl. 06:00 varje dag
+
+    if __name__ == "__main__":
+        print("Schemaläggning påbörjad")
+        while True:
+            schedule.run_pending()
+            time.sleep(1)
